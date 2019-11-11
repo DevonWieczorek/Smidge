@@ -2,9 +2,10 @@ const form = document.querySelector('.url-form');
 const result = document.querySelector('.result-section');
 form.addEventListener('submit', event => {
   event.preventDefault();
-
+  const userID = 123456;
   const input = document.querySelector('.url-input');
-  fetch('/new', {
+
+  fetch(`/${userID}/new`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
