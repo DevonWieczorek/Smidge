@@ -1,3 +1,5 @@
+// Tutorial: https://freshman.tech/url-shortener/
+
 require('dotenv').config();
 
 const express = require('express');
