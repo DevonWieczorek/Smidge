@@ -1,29 +1,30 @@
 {
-  "name": "smidge",
-  "version": "1.0.0",
-  "description": "URL shortener",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DevonWieczorek/Smidge.git"
-  },
-  "author": "Devon Wieczorek",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/DevonWieczorek/Smidge/issues"
-  },
-  "homepage": "https://github.com/DevonWieczorek/Smidge#readme",
-  "devDependencies": {
-    "nodemon": "^1.19.4"
-  },
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "mongodb": "^3.3.3",
-    "nanoid": "^2.1.6"
-  }
+    "name": "smidge",
+    "version": "1.0.0",
+    "description": "URL shortener",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "npx nodemon src/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DevonWieczorek/Smidge.git"
+    },
+    "author": "Devon Wieczorek",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/DevonWieczorek/Smidge/issues"
+    },
+    "homepage": "https://github.com/DevonWieczorek/Smidge#readme",
+    "devDependencies": {
+        "nodemon": "^1.19.4"
+    },
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "mongodb": "^3.3.3",
+        "nanoid": "^2.1.6"
+    }
 }
