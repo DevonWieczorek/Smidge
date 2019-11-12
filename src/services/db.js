@@ -59,4 +59,26 @@ const countView = (db, doc, reqInfo) => {
     links.update({shortID: doc.shortID}, {$set: {'views': (doc.views + 1)}});
 }
 
-module.exports = { shortenUrl, checkIfShortIdExists, countView };
+// Disable redirect, mark shortUrl as inactive
+const disableRedirectByShortID = (db, shortID) => {
+    db.collection('links').update({shortID: shortID}, {$set: {'status': 'inactive'}});
+}
+
+// Remove document by given shortcode ID
+const removeEntryByShortID = (db, shortID) => db.collection('views').remove({shortID: shortID});
+
+// Allow user to look up info on all of their created shortUrls
+const getEntriesByUserID = (db, userID) => db.collection('links').find({userID: userID});
+
+// Get view records for a given shortID
+const getViewsByShortID = (db, shortID) => db.collection('views').find({shortID: shortID});
+
+module.exports = {
+    shortenUrl,
+    checkIfShortIdExists,
+    countView,
+    disableRedirectByShortID,
+    removeEntryByShortID,
+    getEntriesByUserID,
+    getViewsByShortID
+};

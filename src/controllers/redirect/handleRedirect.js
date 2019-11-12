@@ -1,7 +1,6 @@
 const dbServices = require('../../services/db');
 
 const handleRedirect = (req, res) => {
-    console.log('Handle redirect')
     const { db } = req.app.locals;
     const shortID = req.params.shortID;
 
