@@ -56,12 +56,12 @@ const countView = (db, doc, reqInfo) => {
         referer: reqInfo.referer || null
     });
 
-    links.update({shortID: doc.shortID}, {$set: {'views': (doc.views + 1)}});
+    links.updateOne({shortID: doc.shortID}, {$set: {'views': (doc.views + 1)}});
 }
 
 // Disable redirect, mark shortUrl as inactive
 const disableRedirectByShortID = (db, shortID) => {
-    db.collection('links').update({shortID: shortID}, {$set: {'status': 'inactive'}});
+    db.collection('links').updateOne({shortID: shortID}, {$set: {'status': 'inactive'}});
 }
 
 // Remove document by given shortcode ID

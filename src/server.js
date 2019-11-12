@@ -34,6 +34,7 @@ app.get('/:shortID', redirectRouter);
 app.post('/:userID/new', redirectRouter);
 
 // Disable shortlink
+app.get('/:userID/remove/:shortID', redirectRouter);
 app.delete('/:userID/remove/:shortID', redirectRouter);
 
 // Serve static homepage
