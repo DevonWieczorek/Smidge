@@ -1,12 +1,12 @@
 const dbServices = require('../../services/db');
 
-const disableRedirect = (req, res) => {
+const getStatsByShortID = async (req, res) => {
     const { db } = req.app.locals;
     const shortID = req.params.shortID;
 
-    dbServices.disableRedirectByShortID(db, shortID)
-        .then(() => {
-            return res.status(200).send({message: 'ShortUrl disabled.'});
+    dbServices.getViewsByShortID(db, shortID)
+        .then(results => {
+            return res.status(200).json(results);
         })
         .catch(err => {
             console.log(err);
@@ -14,4 +14,4 @@ const disableRedirect = (req, res) => {
         });
 }
 
-module.exports = disableRedirect;
+module.exports = getStatsByShortID;

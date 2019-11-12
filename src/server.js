@@ -7,6 +7,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
 
+const statsRouter = require('./routes/statsRouter');
 const redirectRouter = require('./routes/redirectRouter');
 
 const databaseURL = process.env.DATABASE;
@@ -32,6 +33,12 @@ app.get('/:shortID', redirectRouter);
 
 // Create new shortlink
 app.post('/:userID/new', redirectRouter);
+
+// Get all shortlink info for a user
+app.get('/:userID/stats', statsRouter);
+
+// Get all view info for a given shortlink 
+app.get('/:userID/stats/:shortID', statsRouter);
 
 // Disable shortlink
 app.get('/:userID/remove/:shortID', redirectRouter);

@@ -61,17 +61,33 @@ const countView = (db, doc, reqInfo) => {
 
 // Disable redirect, mark shortUrl as inactive
 const disableRedirectByShortID = (db, shortID) => {
-    db.collection('links').updateOne({shortID: shortID}, {$set: {'status': 'inactive'}});
+    return db.collection('links').updateOne({shortID: shortID}, {$set: {'status': 'inactive'}});
 }
 
 // Remove document by given shortcode ID
-const removeEntryByShortID = (db, shortID) => db.collection('views').remove({shortID: shortID});
+const removeEntryByShortID = (db, shortID) => {
+    db.collection('views').remove({shortID: shortID});
+}
 
 // Allow user to look up info on all of their created shortUrls
-const getEntriesByUserID = (db, userID) => db.collection('links').find({userID: userID});
+const getEntriesByUserID = (db, userID) => {
+    return new Promise((resolve, reject) => {
+        db.collection('links').find({userID: userID.toString()}).toArray((err, result) => {
+            if(err) reject(err);
+            resolve(result);
+        });
+    });
+}
 
 // Get view records for a given shortID
-const getViewsByShortID = (db, shortID) => db.collection('views').find({shortID: shortID});
+const getViewsByShortID = (db, shortID) => {
+    return new Promise((resolve, reject) => {
+        db.collection('views').find({shortID: shortID.toString()}).toArray((err, result) => {
+            if(err) reject(err);
+            resolve(result);
+        });
+    });
+}
 
 module.exports = {
     shortenUrl,
