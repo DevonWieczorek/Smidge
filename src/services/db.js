@@ -45,7 +45,7 @@ const countView = (db, doc, reqInfo) => {
     const links = db.collection('links');
     const views = db.collection('views');
 
-    views.insert({
+    views.insertOne({
         shortID: doc.shortID,
         shortUrl: doc.shortUrl,
         redirectUrl: doc.originalUrl,
